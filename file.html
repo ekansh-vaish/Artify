@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artify - Buy, Sell & Compete</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎨 Artify</div>
+    <nav>
+      <ul>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#gallery">Buy Art</a></li>
+        <li><a href="#competition">Compete</a></li>
+        <li><a href="#live">Live Battle</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+    <button onclick="openCart()">🛒 View Cart</button>
+   
+    <button onclick="openLogin()" id="loginBtn">👤 Login</button>
+    <button id="logoutBtn" onclick="logout()">🚪 Logout</button>
+    <select onchange="changeLang(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+    <label>
+      <input type="checkbox" id="themeToggle" onchange="toggleTheme()" />
+      🌙 Dark Mode
+    </label>
+  </header>
+<div id="loginModal" style="display:none;" class="modal">
+    <div class="modal-content" id="authForm">
+      <span class="close" onclick="closeLogin()">&times;</span>
+      <h2 id="formTitle">Login</h2>
+
+      <input type="email" placeholder="Email" id="authEmail">
+      <input type="email" placeholder="Re-enter Email" id="authReEmail" style="display:none;">
+
+      <input type="password" placeholder="Password" id="authPass">
+      <input type="password" placeholder="Re-enter Password" id="authRePass" style="display:none;">
+
+      <input type="text" id="otpField" placeholder="Enter OTP">
+
+      <button onclick="authAction()">Login</button>
+      <div class="switch" onclick="toggleForm()">Don't have an account? Signup</div>
+    </div>
+  </div>
+  <section class="hero">
+    <h1>Welcome to Artify</h1>
+    <p>Showcase your creativity. Compete. Win. Sell. Connect.</p>
+    <a href="#upload" class="btn">Upload Your Art</a>
+  </section>
+
+  <section id="upload">
+    <h2>Upload Your Artwork</h2>
+    <input type="file" id="artUpload" accept="image/*" /><br><br>
+    <input type="number" id="artPrice" placeholder="Enter Price (₹)" /><br><br>
+    <button onclick="uploadArt()">Upload</button>
+    <div id="uploadPreview"></div>
+  </section>
+
+  <section id="gallery">
+    <h2>Art Gallery - Buy Art</h2>
+    <div class="gallery" id="galleryContainer"></div>
+  </section>
+
+  <section id="competition">
+    <h2>Weekly Competition</h2>
+    <p>Enter now to compete with top artists and win prizes!</p>
+    <button onclick="joinCompetition()">Join Competition</button>
+    <p id="competitionStatus"></p>
+  </section>
+
+  <section id="leaderboard">
+    <h2>🏆 Weekly Leaderboard</h2>
+    <ol id="leaders">
+      <li>🎨 Aarti - <span id="votes-aarti">150</span> votes <button onclick="vote('aarti')">Vote</button></li>
+      <li>👨‍🎨 Dev - <span id="votes-dev">125</span> votes <button onclick="vote('dev')">Vote</button></li>
+      <li>🧑‍🎨 Tina - <span id="votes-tina">100</span> votes <button onclick="vote('tina')">Vote</button></li>
+    </ol>
+  </section>
+
+  <section id="live">
+    <h2>Live Compete</h2>
+    <p>Simulated live battles between artists. Real-time coming soon!</p>
+    <div class="live-area">
+      <div class="player">🎨 You</div>
+      <div class="vs">VS</div>
+      <div class="player">👤 Opponent</div>
+    </div>
+    <button onclick="simulateLive()">Start Battle</button>
+    <p id="battleResult"></p>
+  </section>
+
+  <section id="feedback">
+    <h2>Live Reviews & Feedback</h2>
+    <textarea id="feedbackInput" placeholder="Write your feedback here..."></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+    <div id="feedbackList"></div>
+  </section>
+
+  <section id="chat">
+    <h2>Chat with Artify Bot</h2>
+    <div id="chatWindow" style="height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 1em;"></div>
+    <input type="text" id="chatInput" placeholder="Ask something..." />
+    <button onclick="sendMessage()">Send</button>
+  </section>
+
+  <div id="cartModal" style="display:none;" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCart()">&times;</span>
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <button onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <div id="loginModals" style="display:none;" class="modal">
+    <div class="modal-content" id="authForms">
+      <span class="close" onclick="closeLogin()">&times;</span>
+      <h2 id="formTitles">Login</h2>
+      <input type="email" placeholder="Email" id="authEmails">
+      <input type="password" placeholder="Password" id="authPasss">
+      <button onclick="authAction()">Login</button>
+      <div class="switch" onclick="toggleForm()">Don't have an account? Signup</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Artify | Made for artists, by artists.</p>
+  </footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
